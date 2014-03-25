@@ -35,5 +35,16 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+   
+    'civcontent' => array(
+        'post_model_class'    => 'CivContent\Model\Post\Post',
+    ),
+    
+    'service_manager' => array(
+        'aliases' => array(
+            'civ_zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
+        ),
+    ),
+
     
 );

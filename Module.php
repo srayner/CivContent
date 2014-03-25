@@ -6,6 +6,13 @@ use Zend\ModuleManager\ModuleManager;
 
 class Module
 {
+    protected static $options;
+    
+    public function init(ModuleManager $moduleManager)
+    {
+        $moduleManager->getEventManager()->attach('loadModules.post', array($this, 'modulesLoaded'));
+    }
+    
     public function getAutoloaderConfig()
     {
         return array(
@@ -22,4 +29,55 @@ class Module
         return include __DIR__ . '/config/module.config.php';
     }
     
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'civcontent_service' => function($sm) {
+                    $service = new \CivContent\Service\Content;
+                    $service->setPostMapper($sm->get('civcontent_post_mapper'));
+                    return $service;
+                },
+                'civcontent_post_mapper' => function($sm) {
+                    $mapper = new \CivContent\Model\Post\PostMapper;
+                    $postModelClass = Module::getOption('post_model_class');
+                    $mapper->setEntityPrototype(new $postModelClass);
+                    $mapper->setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
+                    return $mapper;
+    
+                },
+                'civcontent_post' => function ($sm) {
+                    $post = new \CivContent\Model\Post\Post;
+                    return $post;
+                },
+                'edpdiscuss_form' => function ($sm) {
+                    $form = new \CivContent\Form\ContentForm;
+                    return $form;
+                },
+            ),
+            'initializers' => array(
+                function($instance, $sm){
+                    if($instance instanceof Service\DbAdapterAwareInterface){
+                        $dbAdapter = $sm->get('civcontent_zend_db_adapter');
+                        return $instance->setDbAdapter($dbAdapter);
+                    }
+                },
+            ),
+        );
+    
+    }
+    
+    public function modulesLoaded($e)
+    {
+        $config = $e->getConfigListener()->getMergedConfig();
+        static::$options = $config['civcontent'];
+    }
+    
+    public static function getOption($option)
+    {
+        if (!isset(static::$options[$option])) {
+            return null;
+        }
+        return static::$options[$option];
+    }
 }
