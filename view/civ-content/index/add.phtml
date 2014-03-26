@@ -1,0 +1,37 @@
+<?php $this->headScript()
+           ->appendFile($this->basePath() . '/ckeditor/ckeditor.js');
+?>
+<h1>New content post</h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('content/action', array('action' => 'add')));
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('content_category_id'));
+    echo $this->formRow($form->get('post_title'));
+    echo $this->formRow($form->get('post_body'));
+    echo $this->formInput($form->get('submit'));
+?>
+<script>
+        CKEDITOR.replace('editor1', {
+        	toolbarGroups : [
+        	                        { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+        	                        { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+        	                        { name: 'links' },
+        	                        { name: 'insert' },
+        	                        { name: 'forms' },
+        	                        { name: 'tools' },
+        	                        { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+        	                        { name: 'others' },
+        	                        '/',
+        	                        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+        	                        { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+        	                        { name: 'styles' },
+        	                        { name: 'colors' },
+        	                 //       { name: 'about' }
+        	                    ]
+            
+        });
+</script>
+    <?php echo $this->form()->closeTag($form); ?>

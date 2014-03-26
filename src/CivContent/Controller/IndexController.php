@@ -8,14 +8,23 @@ use Zend\View\Model\ViewModel;
 class IndexController extends AbstractActionController
 {
     protected $category;
+    protected $contentService;
     
-    public function getCategory()
+    public function getContentService()
+    {
+        if (null === $this->contentService) {
+            $this->contentService = $this->getServiceLocator()->get('civcontent_service');
+        }
+
+        return $this->contentService;
+    }
+    
+    public function getCategoryName()
     {
         if (null !== $this->category) {
             return $this->category;
         }
-        $name = $this->getEvent()->getRouteMatch()->getParam('category');
-        return $this->category = $this->getContentServiceService()->getCategoryByName($name);
+        return $this->getEvent()->getRouteMatch()->getParam('category');
     }
     
 	public function indexAction()
@@ -23,7 +32,7 @@ class IndexController extends AbstractActionController
     	return new ViewModel();
     }
     
-    public function postAction()
+    public function addAction()
     {
         // Create a new instance of the post form.
         $form = $this->getServiceLocator()->get('civcontent_post_form');
@@ -31,7 +40,7 @@ class IndexController extends AbstractActionController
         $form->setHydrator($formHydrator);
         
         // Grab a copy of the category.
-        $category = $this->getCategory();
+    //    $category = $this->getCategory();
         
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -39,19 +48,21 @@ class IndexController extends AbstractActionController
         {   
             // Create a new post and set its category.
             $post = $this->getServiceLocator()->get('civcontent_post');
-            $post->setCategory($category());
+   //         $post->setCategory($category());
+            
             
             $data = (array) $request->getPost();
-            $form->bind($message);
+            $form->bind($post);
             $form->setData($data);
             if ($form->isValid())
             {
                 // Persist changes.
+                $post->setContentCategoryId(1);  // temp hack
                 $this->getContentService()->persist($post);
                 
                 // Redirect to content category
-                return $this->redirect()->toRoute('civcontent', array(
-                    'category'   => $category->getName(),
+                return $this->redirect()->toRoute('content/action', array(
+       //             'category'   => $category->getName(),
                     'action'     => 'index'
                 ));
             }
@@ -60,7 +71,7 @@ class IndexController extends AbstractActionController
         // If a GET request, or invalid data then render/re-render the form
         return new ViewModel(array(
             'form'   => $form,
-            'tag'    => $category
+         //   'tag'    => $category
         ));
     }
 	

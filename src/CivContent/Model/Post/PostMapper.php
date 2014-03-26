@@ -33,6 +33,6 @@ class PostMapper extends AbstractDbMapper implements PostMapperInterface, DbAdap
         } else {
             $this->insert($post, null, new PostHydrator);
         }
-        return $content;
+        return $post;
 	}
 }

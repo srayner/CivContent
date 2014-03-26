@@ -32,6 +32,9 @@ class Module
     public function getServiceConfig()
     {
         return array(
+            'invokables' => array(
+                'civcontent_post_form_hydrator' => 'Zend\Stdlib\Hydrator\ClassMethods'
+            ),
             'factories' => array(
                 'civcontent_service' => function($sm) {
                     $service = new \CivContent\Service\Content;
@@ -50,7 +53,7 @@ class Module
                     $post = new \CivContent\Model\Post\Post;
                     return $post;
                 },
-                'edpdiscuss_form' => function ($sm) {
+                'civcontent_post_form' => function ($sm) {
                     $form = new \CivContent\Form\ContentForm;
                     return $form;
                 },
