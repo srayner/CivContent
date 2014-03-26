@@ -5,9 +5,9 @@ namespace CivContent\Model\Post;
 interface PostInterface
 {
 	public function getContentPostId();
-	public function setContentPostId();
+	public function setContentPostId($id);
 	public function getPostTitle();
-	public function setPostTitle();
+	public function setPostTitle($title);
 	public function getPostBody();
-	public function setPostBody();
+	public function setPostBody($body);
 }

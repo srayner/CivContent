@@ -5,6 +5,7 @@ namespace CivContent\Model\Post;
 class Post implements PostInterface
 {
 	protected $contentPostId;
+	protected $contentCategoryId;
 	protected $postTitle;
 	protected $postBody;
 
@@ -18,6 +19,17 @@ class Post implements PostInterface
 		$this->contentPostId = $id;
 		return $this;
 	}
+
+	public function getContentCategoryId()
+	{
+		return $this->contentCategoryId;
+	}
+	
+	public function setContentCategoryId($id)
+	{
+		$this->contentCategoryId = $id;
+		return $this;
+	}
 	
     public function getPostTitle()
 	{
@@ -29,7 +41,7 @@ class Post implements PostInterface
 		$this->postTitle = $title;
 		return $this;
 	}
-	
+
     public function getPostBody()
 	{
 		return $this->postBody;

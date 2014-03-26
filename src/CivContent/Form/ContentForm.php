@@ -41,6 +41,7 @@ class ContentForm extends Form
                         'type' => 'textarea',
                         'class' => 'form-control',
                         'rows' => '6',
+                        'id' => 'editor1'
                 ),
                 
         ));
