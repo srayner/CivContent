@@ -15,4 +15,4 @@ CREATE TABLE IF NOT EXISTS `content_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 ALTER TABLE `content_post`
-  ADD CONSTRAINT `fk_content_category` FOREIGN KEY (`content_post_id`) REFERENCES `content_category` (`content_category_id`);
+  ADD CONSTRAINT `fk_content_category` FOREIGN KEY (`content_category_id`) REFERENCES `content_category` (`content_category_id`);

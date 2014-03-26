@@ -34,6 +34,20 @@ return array(
                     ),
                 ),
             ),
+            'civ-content' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/:category/:postid',
+                    'constraints' => array(
+                        'category' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'postid'   => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'CivContent\Controller\Index',
+                        'action'     => 'view'
+                    ),
+               ),
+            )
         ),
     ),
     

@@ -32,6 +32,19 @@ class IndexController extends AbstractActionController
     	return new ViewModel();
     }
     
+    public function viewAction()
+    {
+        $postId = $this->getEvent()->getRouteMatch()->getParam('postid');
+        $post = $this->getContentService()->getPostById($postId);
+        if ($post === false)
+        {
+            $this->notFoundAction();
+        }
+        return array(
+            'post' => $post
+        );
+    }
+    
     public function addAction()
     {
         // Create a new instance of the post form.
