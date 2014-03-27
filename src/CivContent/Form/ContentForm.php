@@ -11,6 +11,16 @@ class ContentForm extends Form
         parent::__construct();
         
         $this->add(array(
+                'name' => 'content_post_id',
+                'options' => array(
+                        'label' => '',
+                ),
+                'attributes' => array(
+                        'type' => 'hidden',
+                ),
+        ));
+        
+        $this->add(array(
                 'name' => 'content_category_id',
                 'options' => array(
                         'label' => '',
