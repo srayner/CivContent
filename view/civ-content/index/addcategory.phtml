@@ -1,0 +1,9 @@
+<h1>New content post</h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('content/action', array('action' => 'addcategory')));
+    $form->remove('content_category_id');
+    $form->prepare();
+    echo $this->renderForm($form, '');
+?>

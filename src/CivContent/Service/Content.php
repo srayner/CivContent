@@ -13,6 +13,11 @@ class Content implements ServiceManagerAwareInterface
     protected $serviceManager;
     
     /**
+     * @var CategoryMapperInterface;
+     */
+    protected $categoryMapper;
+    
+    /**
      * @var PostMapperInterface
      */
     protected $postMapper;
@@ -40,11 +45,33 @@ class Content implements ServiceManagerAwareInterface
     }
     
     /**
+     * getCategoryMapper
+     *
+     * @return ContentCategoryMapperInterface
+     */
+    public function getCategoryMapper()
+    {
+        return $this->categoryMapper;
+    }
+    
+    /**
+     * setCategoryMapper
+     *
+     * @param ContentCategoryMapperInterface $categoryMapper
+     * @return Content
+     */
+    public function setCategoryMapper($categoryMapper)
+    {
+        $this->categoryMapper = $categoryMapper;
+        return $this;
+    }
+    
+    /**
      * getPostMapper
      *
      * @return ContentPostMapperInterface
      */
-    public function getThreadMapper()
+    public function getPostMapper()
     {
         return $this->postMapper;
     }
@@ -59,6 +86,21 @@ class Content implements ServiceManagerAwareInterface
     {
         $this->postMapper = $postMapper;
         return $this;
+    }
+    
+    public function getCategories()
+    {
+        return $this->categoryMapper->getCategories();
+    }
+    
+    public function getCategoryById($id)
+    {
+        return $this->categoryMapper->getCategoryById($id);
+    }
+    
+    public function persistCategory($category)
+    {
+        return $this->categoryMapper->persist($category);
     }
     
     public function getPostsByCategoryId($id)

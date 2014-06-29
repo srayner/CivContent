@@ -1,0 +1,28 @@
+<h1>Content Categories</h1>
+<table  class="table table-striped">
+    <tr>
+      <th>Category Name</th>
+      <th>Actions</th>
+    </tr>
+    <?php foreach($this->categories as $category):?>
+    <tr>
+        <td>
+            <?php echo $category->getCategoryName()?>
+        </td>
+        <td>
+            <a href="<?php echo $this->url('content/action', array(
+                'action' => 'editCategory',
+                'categoryid'   => $category->getContentCategoryId()
+            )); ?>">Edit</a>
+            <a href="<?php echo $this->url('content/action', array(
+                'action' => 'deleteCategory',
+                'categoryid'   => $category->getContentCategoryId()
+            )); ?>">Delete</a>
+        </td>
+    </tr>
+    <?php endforeach;?>
+</table>
+
+<a href="<?php echo $this->url('content/action', array(
+    'action' => 'addcategory'
+))?>">Add new category</a>

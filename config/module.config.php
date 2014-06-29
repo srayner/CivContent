@@ -66,6 +66,7 @@ return array(
     ),
    
     'civcontent' => array(
+        'category_model_class' => 'CivContent\Model\Category\Category',
         'post_model_class'    => 'CivContent\Model\Post\Post',
     ),
     
