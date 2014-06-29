@@ -75,8 +75,7 @@ class IndexController extends AbstractActionController
             // Create a new post and set its category.
             $post = $this->getServiceLocator()->get('civcontent_post');
    //         $post->setCategory($category());
-            
-            
+   
             $data = (array) $request->getPost();
             $form->bind($post);
             $form->setData($data);

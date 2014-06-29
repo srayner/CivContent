@@ -20,14 +20,23 @@ class ContentForm extends Form
                 ),
         ));
         
+        $categories = array(
+            '1' => 'My Robot',
+            '2' => 'Raspberry Pi',
+            '3' => 'RepRap',
+            '4' => 'Beaglebone Black',
+            '5' => 'Quadcopter',
+        );
         $this->add(array(
-                'name' => 'content_category_id',
-                'options' => array(
-                        'label' => '',
-                ),
-                'attributes' => array(
-                        'type' => 'hidden',
-                ),
+            'name' => 'content_category_id',
+            'type' => 'Zend\Form\Element\Select',
+            'options' => array(
+                'label' => 'Category'
+            ),
+            'attributes' => array(
+                'options' => $categories,
+                'class' => 'form-control',
+            )
         ));
         
         $this->add(array(
@@ -49,7 +58,7 @@ class ContentForm extends Form
                 ),
                 'attributes' => array(
                         'type' => 'textarea',
-                        'class' => 'form-control',
+                        'class' => 'form-control ckeditor',
                         'rows' => '6',
                         'id' => 'editor1'
                 ),

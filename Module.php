@@ -70,6 +70,16 @@ class Module
     
     }
     
+    public function getViewHelperConfig()
+    {
+        return array(
+            'invokables' => array(
+                'RenderForm' => 'CivContent\View\Helper\RenderForm'
+            )
+        );
+    
+    }
+    
     public function modulesLoaded($e)
     {
         $config = $e->getConfigListener()->getMergedConfig();

@@ -7,36 +7,5 @@
     $form = $this->form;
     $form->setAttribute('action', $this->url('content/action', array('action' => 'add')));
     $form->prepare();
-    echo $this->form()->openTag($form);
-    echo $this->formHidden($form->get('content_post_id'));
-    echo $this->formHidden($form->get('content_category_id'));
-    echo $this->formRow($form->get('post_title'));
-    echo $this->formRow($form->get('post_body'));
-    echo $this->formInput($form->get('submit'));
+    echo $this->renderForm($form, '');
 ?>
-<script>
-    CKEDITOR.replace('editor1', {
-        toolbarGroups : [
-            { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-        	{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-        	{ name: 'links' },
-        	{ name: 'insert' },
-        	{ name: 'forms' },
-        	{ name: 'tools' },
-        	{ name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
-        	{ name: 'others' },
-        	'/',
-        	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-        	{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
-        	{ name: 'styles' },
-        	{ name: 'colors' }
-        ],
-        filebrowserBrowseUrl : '/browser/browse/type/all',
-        filebrowserUploadUrl : '/browser/upload/type/all',
-        filebrowserImageBrowseUrl : '/browser/browse/type/image',
-        filebrowserImageUploadUrl : '/browser/upload/type/image',
-        filebrowserWindowWidth  : 800,
-        filebrowserWindowHeight : 500               
-    });
-</script>
-    <?php echo $this->form()->closeTag($form); ?>
