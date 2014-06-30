@@ -36,7 +36,9 @@ The following routes are configured by default;
 
     \content\category\edit
 (for editing a category)
+
     \content\category\delete
 (for deleting a category)
+
     \:categoryname\:posttitle
 (for viewing a post)
