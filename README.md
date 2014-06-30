@@ -16,12 +16,21 @@ The CategoryController has actions for adding, editing, deleting and listing cat
 
 The following routes are configured by default;
 
-\content				(for listing all posts)
-\content\add               (for adding a new post)
-\content\edit\:postid	      (for editing a post)
-\content\delete\:postid     (for deleteing a post)
-\content\category           (for listing all categories)
-\content\category\add       (for adding a category)
-\content\category\edit      (for editing a category)
-\content\category\delete    (for deleting a category)
-\:categoryname\:posttitle   (for viewing a post)
+    \content
+(for listing all posts)
+    \content\add
+(for adding a new post)
+    \content\edit\:postid	
+(for editing a post)
+    \content\delete\:postid
+(for deleteing a post)
+    \content\category
+(for listing all categories)
+    \content\category\add
+(for adding a category)
+    \content\category\edit
+(for editing a category)
+    \content\category\delete
+(for deleting a category)
+    \:categoryname\:posttitle
+(for viewing a post)
