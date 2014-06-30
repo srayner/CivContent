@@ -26,7 +26,7 @@ class CategoryController extends AbstractActionController
         );
     }
 
-	public function addCategoryAction()
+	public function addAction()
     {
         // Create a new instance of the category form.
         $form = $this->getServiceLocator()->get('civcontent_category_form');
