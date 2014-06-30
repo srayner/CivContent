@@ -33,6 +33,22 @@ return array(
                         ),
                     ),
                 ),
+                'child_routes' => array(
+                    'category' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/category[/:action[/:categoryid]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'CivContent\Controller\Category',
+                                'action'     => 'index'
+                            ),
+                        ),
+                    ),
+                ),
             ),
             'civ-content' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
@@ -54,7 +70,8 @@ return array(
     /* Controllers */
     'controllers' => array(
         'invokables' => array(
-            'CivContent\Controller\Index' => 'CivContent\Controller\IndexController'
+            'CivContent\Controller\Index'    => 'CivContent\Controller\IndexController',
+            'CivContent\Controller\Category' => 'CivContent\Controller\CategoryController'
         ),
     ),
     

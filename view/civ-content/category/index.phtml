@@ -10,12 +10,12 @@
             <?php echo $category->getCategoryName()?>
         </td>
         <td>
-            <a href="<?php echo $this->url('content/action', array(
-                'action' => 'editCategory',
+            <a href="<?php echo $this->url('content/category', array(
+                'action' => 'edit',
                 'categoryid'   => $category->getContentCategoryId()
             )); ?>">Edit</a>
-            <a href="<?php echo $this->url('content/action', array(
-                'action' => 'deleteCategory',
+            <a href="<?php echo $this->url('content/category', array(
+                'action' => 'delete',
                 'categoryid'   => $category->getContentCategoryId()
             )); ?>">Delete</a>
         </td>
@@ -23,6 +23,6 @@
     <?php endforeach;?>
 </table>
 
-<a href="<?php echo $this->url('content/action', array(
-    'action' => 'addcategory'
+<a href="<?php echo $this->url('content/category', array(
+    'action' => 'add'
 ))?>">Add new category</a>

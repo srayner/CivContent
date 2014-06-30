@@ -1,0 +1,9 @@
+<h1>New content category</h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('content/category', array('action' => 'add')));
+    $form->remove('content_category_id');
+    $form->prepare();
+    echo $this->renderForm($form, '');
+?>
