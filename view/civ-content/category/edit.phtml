@@ -2,8 +2,10 @@
 
 <?php
     $form = $this->form;
-    $form->setAttribute('action', $this->url('content/category', array('action' => 'edit')));
-    $form->remove('content_category_id');
+    $form->setAttribute('action', $this->url('content/category', array(
+        'action' => 'edit',
+        'categoryid' => $this->id
+    )));
     $form->prepare();
     echo $this->renderForm($form, '');
 ?>

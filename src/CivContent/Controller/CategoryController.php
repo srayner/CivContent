@@ -71,7 +71,6 @@ class CategoryController extends AbstractActionController
         // Grab copy of the existing entity
         $id = $this->params()->fromRoute('categoryid');
         $category = $this->getContentService()->getCategoryById($id);
-        $form->setBindOnValidate(false);
         $form->bind($category);
     
         // Check if the request is a POST.
@@ -95,6 +94,7 @@ class CategoryController extends AbstractActionController
         // If a GET request, or invalid data then render/re-render the form
         return new ViewModel(array(
             'form'   => $form,
+            'id' => $id
         ));
     }
 	
