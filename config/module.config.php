@@ -10,7 +10,7 @@ return array(
     'router' => array(
         'routes' => array(
             'content' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => '/content',
                     'defaults' => array(
@@ -32,8 +32,6 @@ return array(
                             ),
                         ),
                     ),
-                ),
-                'child_routes' => array(
                     'category' => array(
                         'type'    => 'Segment',
                         'options' => array(
