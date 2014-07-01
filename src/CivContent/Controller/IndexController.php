@@ -112,6 +112,10 @@ public function editAction()
 		
         // Grab copy of the existing entity
         $post = $this->getPost();
+        if (!$post) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
         $form->setBindOnValidate(false);
 		$form->bind($post);
 		    

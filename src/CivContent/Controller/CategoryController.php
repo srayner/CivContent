@@ -71,6 +71,11 @@ class CategoryController extends AbstractActionController
         // Grab copy of the existing entity
         $id = $this->params()->fromRoute('categoryid');
         $category = $this->getContentService()->getCategoryById($id);
+        if (!$category)
+        {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
         $form->bind($category);
     
         // Check if the request is a POST.
