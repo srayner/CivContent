@@ -58,6 +58,7 @@ class Module
                 'civcontent_post_form' => function($sm) {
                     $form = new \CivContent\Form\ContentForm;
                     $form->setInputFilter(new \CivContent\Form\PostFilter());
+                    $form->setHydrator($sm->get('civcontent_post_form_hydrator'));
                     return $form;
                 },
                 'civcontent_category_mapper' => function($sm) {
@@ -74,6 +75,7 @@ class Module
                 'civcontent_category_form' => function($sm) {
                     $form = new \CivContent\Form\CategoryForm;
                     $form->setInputFilter(new \CivContent\Form\CategoryFilter());
+                    $form->setHydrator($sm->get('civcontent_category_form_hydrator'));
                     return $form;
                 }
             ),

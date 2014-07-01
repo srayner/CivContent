@@ -30,8 +30,6 @@ class CategoryController extends AbstractActionController
     {
         // Create a new instance of the category form.
         $form = $this->getServiceLocator()->get('civcontent_category_form');
-        $formHydrator = $this->getServiceLocator()->get('civcontent_category_form_hydrator');
-        $form->setHydrator($formHydrator);
     
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -65,8 +63,6 @@ class CategoryController extends AbstractActionController
     {
         // Create a new instance of the category form.
         $form = $this->getServiceLocator()->get('civcontent_category_form');
-        $formHydrator = $this->getServiceLocator()->get('civcontent_category_form_hydrator');
-        $form->setHydrator($formHydrator);
          
         // Grab copy of the existing entity
         $id = $this->params()->fromRoute('categoryid');

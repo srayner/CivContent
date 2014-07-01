@@ -62,8 +62,6 @@ class IndexController extends AbstractActionController
     {
         // Create a new instance of the post form.
         $form = $this->getServiceLocator()->get('civcontent_post_form');
-        $formHydrator = $this->getServiceLocator()->get('civcontent_post_form_hydrator');
-        $form->setHydrator($formHydrator);
         
         // Grab a copy of the category.
     //    $category = $this->getCategory();
@@ -104,8 +102,6 @@ public function editAction()
     {
         // Create a new instance of the post form.
         $form = $this->getServiceLocator()->get('civcontent_post_form');
-        $formHydrator = $this->getServiceLocator()->get('civcontent_post_form_hydrator');
-        $form->setHydrator($formHydrator);
         
         // Grab a copy of the category.
     //    $category = $this->getCategory();
