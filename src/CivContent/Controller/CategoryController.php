@@ -102,5 +102,4 @@ class CategoryController extends AbstractActionController
             'id' => $id
         ));
     }
-	
 }
