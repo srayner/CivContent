@@ -25,8 +25,8 @@ return array(
                         'options' => array(
                             'route'    => '/:action[/:postid]',
                             'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'postid' => '[0-9]*',
                             ),
                             'defaults' => array(
                             ),
@@ -37,8 +37,8 @@ return array(
                         'options' => array(
                             'route'    => '/category[/:action[/:categoryid]]',
                             'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'categoryid' => '[0-9]*',
                             ),
                             'defaults' => array(
                                 'controller' => 'CivContent\Controller\Category',
