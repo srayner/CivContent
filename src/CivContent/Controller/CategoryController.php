@@ -98,4 +98,20 @@ class CategoryController extends AbstractActionController
             'id' => $id
         ));
     }
+    
+    public function deleteAction()
+    {
+    	$form = $this->getServiceLocator()->get('civcontent_confirmation_form');
+    	
+    	$id = $this->params()->fromRoute('categoryid');
+        if (!$id)
+        {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+    	return new ViewModel(array(
+    	  'id' => $id,
+    	  'form' => $form
+    	));
+    }
 }

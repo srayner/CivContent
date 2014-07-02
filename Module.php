@@ -34,7 +34,7 @@ class Module
         return array(
             'invokables' => array(
                 'civcontent_category_form_hydrator' => 'Zend\Stdlib\Hydrator\ClassMethods',
-                'civcontent_post_form_hydrator' => 'Zend\Stdlib\Hydrator\ClassMethods'
+                'civcontent_post_form_hydrator' => 'Zend\Stdlib\Hydrator\ClassMethods',
             ),
             'factories' => array(
                 'civcontent_service' => function($sm) {
@@ -76,6 +76,10 @@ class Module
                     $form = new \CivContent\Form\CategoryForm;
                     $form->setInputFilter(new \CivContent\Form\CategoryFilter());
                     $form->setHydrator($sm->get('civcontent_category_form_hydrator'));
+                    return $form;
+                },
+                'civcontent_confirmation_form' => function($sm) {
+                    $form = new \CivContent\Form\ConfirmationForm;
                     return $form;
                 }
             ),
