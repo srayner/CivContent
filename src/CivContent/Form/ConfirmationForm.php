@@ -39,7 +39,7 @@ class ConfirmationForm extends Form
                 'type'  => 'submit',
                 'value' => 'No',
                 'id'    => 'nobutton',
-                'class' => 'btn btn-primary'
+                'class' => 'btn btn-default'
             ),
         ));
         
