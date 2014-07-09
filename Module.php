@@ -99,7 +99,8 @@ class Module
     {
         return array(
             'invokables' => array(
-                'RenderForm' => 'CivContent\View\Helper\RenderForm'
+                'RenderFormHorizontal' => 'CivContent\View\Helper\RenderFormHorizontal',
+                'RenderFormVertical' => 'CivContent\View\Helper\RenderFormVertical'
             )
         );
     

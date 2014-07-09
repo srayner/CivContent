@@ -1,5 +1,9 @@
-<h1>Edit content category</h1>
+<h2>Edit content category</h2>
 
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Content Post</h4></div>
+    <div class="panel-body">
+    
 <?php
     $form = $this->form;
     $form->setAttribute('action', $this->url('content/category', array(
@@ -7,5 +11,8 @@
         'categoryid' => $this->id
     )));
     $form->prepare();
-    echo $this->renderForm($form, '');
+    echo $this->renderFormVertical($form, '');
 ?>
+
+    </div>
+</div>

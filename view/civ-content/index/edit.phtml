@@ -1,11 +1,18 @@
 <?php $this->headScript()
            ->appendFile($this->basePath() . '/ckeditor/ckeditor.js');
 ?>
-<h1>Edit content post</h1>
+<h2>Edit content post</h2>
 
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Content Post</h4></div>
+    <div class="panel-body">
+  
 <?php
     $form = $this->form;
     $form->setAttribute('action', $this->url('content/action', array('action' => 'add')));
     $form->prepare();
-    echo $this->renderForm($form, '');
+    echo $this->renderFormHorizontal($form);
 ?>
+
+    </div>
+</div>

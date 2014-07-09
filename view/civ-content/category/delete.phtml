@@ -1,7 +1,15 @@
-<h1>Delete content category</h1>
+<h2>Delete content category</h2>
 
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Delete Content Category</h4></div>
+    <div class="panel-body">
+        <p>Are you sure you want to delete this content category?</p>
+    
 <?php 
     $form = $this->form;
     $form->prepare();
-    echo $this->renderForm($form, '');
+    echo $this->renderFormVertical($form);
 ?>
+
+    </div>
+</div>

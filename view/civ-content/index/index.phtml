@@ -1,4 +1,4 @@
-<h1>Content Posts</h1>
+<h2>Content Posts</h2>
 <table  class="table table-striped">
     <tr>
       <th>Post Title</th>
@@ -25,3 +25,11 @@
     </tr>
     <?php endforeach;?>
 </table>
+
+<a class="btn btn-default" href="<?php echo $this->url('content/action', array(
+    'action' => 'add'
+)); ?>">New Post</a>
+
+<a class="btn btn-default" href="<?php echo $this->url('content/category', array(
+    'action' => 'index'
+)); ?>">Categories</a>
