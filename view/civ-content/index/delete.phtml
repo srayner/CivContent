@@ -1,0 +1,15 @@
+<h2>Delete content post</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Delete Content Post</h4></div>
+    <div class="panel-body">
+        
+        <p>Are you sure you want to delete this content post?</p>
+        <?php
+            $form = $this->form;
+            $form->prepare();
+            echo $this->renderFormVertical($form);
+        ?>
+
+    </div>
+</div>

@@ -129,7 +129,6 @@ public function editAction()
                 
                 // Redirect to content category
                 return $this->redirect()->toRoute('content/action', array(
-       //             'category'   => $category->getName(),
                     'action'     => 'index'
                 ));
             }
@@ -138,7 +137,36 @@ public function editAction()
         // If a GET request, or invalid data then render/re-render the form
         return new ViewModel(array(
             'form'   => $form,
-         //   'tag'    => $category
         ));
-    }	
+    }
+
+    public function deleteAction()
+    {
+        $form = $this->getServiceLocator()->get('civcontent_confirmation_form');
+         
+        $id = $this->params()->fromRoute('postid');
+        if (!$id)
+        {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // delete
+            $this->getContentService()->deletePostById($id);
+            
+            // Redirect to content category
+            return $this->redirect()->toRoute('content/action', array(
+                'action'     => 'index'
+            ));
+        }
+        
+        return new ViewModel(array(
+            'id' => $id,
+            'form' => $form
+        ));
+    }
 }

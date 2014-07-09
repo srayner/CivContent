@@ -11,12 +11,20 @@ class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface
 	protected $tableName = 'content_category';
     protected $contentCategoryIDField = 'content_category_id';
 	
+    /**
+     * getCategories - Returns all categories.
+     */
 	public function getCategories()
 	{
 	    $select = $this->getSelect();
 	    return $this->select($select);
 	}
 	
+	/**
+	 * getCategoryById - Returns a single category.
+	 * 
+	 * @param unknown_type $id
+	 */
 	public function getCategoryById($id)
 	{
 		$select = $this->getSelect()
@@ -24,6 +32,12 @@ class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface
         return $this->select($select)->current();
 	}
 	
+	/**
+	 * persist - persists a category object to the database.
+	 * 
+	 * @param CategoryInterface $category
+	 * @return CategoryInterface
+	 */
 	public function persist(CategoryInterface $category)
 	{
 		if ($category->getContentCategoryId() > 0) {
@@ -32,6 +46,16 @@ class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface
             $this->insert($category, null, new CategoryHydrator);
         }
         return $category;
+	}
+	
+	/**
+	 * deleteCategoryById - Deletes a content category.
+	 * 
+	 * @param unknown_type $id
+	 */
+	public function deleteCategoryById($id)
+	{
+	    return parent::delete(array($this->contentCategoryIDField => $id));
 	}
 	
     /**

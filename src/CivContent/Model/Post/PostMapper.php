@@ -36,6 +36,16 @@ class PostMapper extends AbstractDbMapper implements PostMapperInterface, DbAdap
         return $post;
 	}
 	
+	/**
+	 * deletePostById - Deletes a content post.
+	 * 
+	 * @param unknown_type $id
+	 */
+	public function deletePostById($id)
+	{
+	    return parent::delete(array($this->contentPostIDField => $id));
+	}
+	
     /**
      * insert - Inserts a new content post into the database, using the specified hydrator.
      * 

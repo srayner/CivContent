@@ -109,6 +109,20 @@ class CategoryController extends AbstractActionController
             $this->getResponse()->setStatusCode(404);
             return;
         }
+        
+        // Check if the request is a POST.
+        $request = $this->getRequest();
+        if ($request->isPost())
+        {
+            // delete
+            $this->getContentService()->deleteCategoryById($id);
+
+            // Redirect to content category
+            return $this->redirect()->toRoute('content/category', array(
+                'action'     => 'index'
+            ));
+        }
+        
     	return new ViewModel(array(
     	  'id' => $id,
     	  'form' => $form

@@ -118,4 +118,13 @@ class Content implements ServiceManagerAwareInterface
         return $this->postMapper->persist($post);
     }
     
+    public function deleteCategoryById($id)
+    {
+        return $this->categoryMapper->deleteCategoryById($id);
+    }
+    
+    public function deletePostById($id)
+    {
+        return $this->postMapper->deletePostById($id);
+    }
 }
