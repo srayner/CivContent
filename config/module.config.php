@@ -87,7 +87,7 @@ return array(
     
     'service_manager' => array(
         'aliases' => array(
-            'civ_zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
+            'civcontent_zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
         ),
     ),
 
