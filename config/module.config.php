@@ -11,6 +11,7 @@ return array(
         'routes' => array(
             'content' => array(
                 'type' => 'Literal',
+                'priority' => 9000,
                 'options' => array(
                     'route'    => '/content',
                     'defaults' => array(
@@ -20,13 +21,22 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
+                    'list' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/list/:category',
+                            'constraints' => array(
+                                'category' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                        ),
+                    ),
                     'action' => array(
                         'type'    => 'Segment',
                         'options' => array(
                             'route'    => '/:action[/:postid]',
                             'constraints' => array(
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'postid' => '[0-9]*',
+                                'action'   => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'postid'   => '[0-9]*',
                             ),
                             'defaults' => array(
                             ),
@@ -50,18 +60,34 @@ return array(
             ),
             'civ-content' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
+                'priority' => -1000,
                 'options' => array(
-                    'route' => '/:category/:postid',
+                    'route' => '/:category',
                     'constraints' => array(
                         'category' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'postid'   => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'CivContent\Controller\Index',
+                        'controller' => 'CivContent\Controller\Category',
                         'action'     => 'view'
                     ),
-               ),
-            )
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'post' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/:postid',
+                            'constraints' => array(
+                                'postid' => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'CivContent\Controller\Index',
+                                'action'     => 'view'
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     

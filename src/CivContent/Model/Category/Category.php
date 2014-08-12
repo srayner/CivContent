@@ -6,6 +6,8 @@ class Category implements CategoryInterface
 {
     protected $contentCategoryId;
     protected $categoryName;
+    protected $urlPath;
+    protected $categoryBody;
     
     public function getContentCategoryId()
     {
@@ -26,6 +28,28 @@ class Category implements CategoryInterface
     public function setCategoryName($name)
     {
         $this->categoryName = $name;
+        return $this;
+    }
+    
+    public function getUrlPath()
+    {
+        return $this->urlPath;
+    }
+    
+    public function setUrlPath($path)
+    {
+        $this->urlPath = $path;
+        return $this;
+    }
+    
+    public function getCategoryBody()
+    {
+        return $this->categoryBody;
+    }
+    
+    public function setCategoryBody($body)
+    {
+        $this->categoryBody = $body;
         return $this;
     }
 }

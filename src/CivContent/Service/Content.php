@@ -103,6 +103,11 @@ class Content implements ServiceManagerAwareInterface
         return $this->categoryMapper->getCategoryById($id);
     }
     
+    public function getCategoryByUrlPath($path)
+    {
+        return $this->categoryMapper->getCategoryByUrlPath($path);
+    }
+    
     public function persistCategory($category)
     {
         return $this->categoryMapper->persist($category);

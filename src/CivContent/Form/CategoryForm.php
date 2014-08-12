@@ -31,7 +31,31 @@ class CategoryForm extends Form
                 'type' => 'text',
                 'class' => 'form-control',
             ),
+        ));
         
+        // Url path.
+        $this->add(array(
+            'name' => 'url_path',
+            'options' => array(
+                'label' => 'URL Path',
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'class' => 'form-control',
+            ),
+        ));
+        
+        $this->add(array(
+            'name' => 'category_body',
+            'options' => array(
+                'label' => 'Content',
+            ),
+            'attributes' => array(
+                'type' => 'textarea',
+                'class' => 'form-control ckeditor',
+                'rows' => '6',
+                'id' => 'editor1'
+            ),
         ));
         
         // Submit button.

@@ -25,6 +25,23 @@ class CategoryController extends AbstractActionController
             'categories' => $categories
         );
     }
+    
+    public function viewAction()
+    {
+        // Check if we can find the category.
+        $urlPath = $this->getEvent()->getRouteMatch()->getParam('category');
+        $category = $this->getContentService()->getCategoryByUrlPath($urlPath);
+        if (false === $category)
+        {
+            $this->notFoundAction();
+            return;
+        }
+        $posts = $this->getContentService()->getPostsByCategoryId($category->getContentCategoryId());
+        return array(
+            'category' => $category,
+            'posts' => $posts
+        );
+    }
 
 	public function addAction()
     {

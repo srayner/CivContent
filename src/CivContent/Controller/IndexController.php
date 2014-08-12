@@ -38,14 +38,23 @@ class IndexController extends AbstractActionController
     
 	public function indexAction()
     {
-    	$posts = $this->getContentService()->getPostsByCategoryId(1);
+        $urlPath = $this->getEvent()->getRouteMatch()->getParam('category');
+    	$category = $this->getContentService()->getCategoryByUrlPath($urlPath);
+    	if (false === $category)
+    	{
+    	    $this->notFoundAction();
+    	    return;
+    	}
+        $posts = $this->getContentService()->getPostsByCategoryId($category->getContentCategoryId());
     	return array(
+    	    'category' => $category,
     	    'posts' => $posts
     	);
     }
     
     public function viewAction()
     {
+        // Check if we can find the post.
         $postId = $this->getEvent()->getRouteMatch()->getParam('postid');
         $post = $this->getContentService()->getPostById($postId);
         if ($post === false)

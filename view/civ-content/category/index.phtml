@@ -7,7 +7,9 @@
     <?php foreach($this->categories as $category):?>
     <tr>
         <td>
-            <?php echo $category->getCategoryName()?>
+            <a href="<?php echo $this->url('content/list', array(
+                'category' => $category->getUrlPath()
+            )); ?>"><?php echo $category->getCategoryName()?></a>
         </td>
         <td>
             <a href="<?php echo $this->url('content/category', array(
@@ -26,7 +28,3 @@
 <a class="btn btn-default" href="<?php echo $this->url('content/category', array(
     'action' => 'add'
 ))?>">Add new category</a>
-
-<a class="btn btn-default" href="<?php echo $this->url('content/action', array(
-    'action' => 'index'
-))?>">Content Posts</a>

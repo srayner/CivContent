@@ -1,4 +1,4 @@
-<h2>Content Posts</h2>
+<h2><?php echo $this->category->getCategoryName(); ?> Posts</h2>
 <table  class="table table-striped">
     <tr>
       <th>Post Title</th>
@@ -7,7 +7,7 @@
     <?php foreach($this->posts as $post):?>
     <tr>
         <td>
-            <a href="<?php echo $this->url('civ-content', array(
+            <a href="<?php echo $this->url('civ-content/post', array(
                 'category' => 'asas',
                 'postid'   => $post->getContentPostId()
             )); ?>"><?php echo $post->getPostTitle()?></a>

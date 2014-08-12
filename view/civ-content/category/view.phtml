@@ -1,0 +1,18 @@
+<?php
+    echo $this->category->getCategoryBody();
+?>
+
+<?php foreach($this->posts as $post):?>
+        
+    <div class="span4">
+        <h2><?php echo $post->getPostTitle() ?></h2>
+        <p><?php echo $post->getPostTitle() ?></p>
+            
+        <p><a class="btn btn-info" href="<?php echo $this->url('civ-content/post', array(
+            'category' => $category->getUrlPath(),
+            'postid'   => $post->getContentPostId()
+            )
+        )?>" target="_self"><?php echo $post->getPostTitle() ?> &raquo;</a></p>
+    </div>
+
+<?php endforeach;?>

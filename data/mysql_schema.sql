@@ -1,9 +1,11 @@
 CREATE TABLE IF NOT EXISTS `content_category` (
   `content_category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `url_path` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `category_body` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`content_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `content_post` (
   `content_post_id` int(11) NOT NULL AUTO_INCREMENT,

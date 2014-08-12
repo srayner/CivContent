@@ -10,6 +10,7 @@ class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface
 {
 	protected $tableName = 'content_category';
     protected $contentCategoryIDField = 'content_category_id';
+	protected $contentCategoryUrlPathField = 'url_path';
 	
     /**
      * getCategories - Returns all categories.
@@ -36,12 +37,26 @@ class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface
 	 * getCategoryById - Returns a single category.
 	 * 
 	 * @param unknown_type $id
+	 * @returns CategoryInterface
 	 */
 	public function getCategoryById($id)
 	{
 		$select = $this->getSelect()
                        ->where(array($this->contentCategoryIDField => $id));
         return $this->select($select)->current();
+	}
+
+	/**
+	 * getCategoryByUrlPath - Returns a single cateogry.
+	 * 
+	 * @param unknown_type $path
+	 * @returns CategoryInterface
+	 */
+	public function getCategoryByUrlPath($path)
+	{
+	    $select = $this->getSelect()
+	                   ->where(array($this->contentCategoryUrlPathField => $path));
+	    return $this->select($select)->current();
 	}
 	
 	/**
