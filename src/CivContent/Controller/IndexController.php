@@ -16,25 +16,24 @@ class IndexController extends AbstractActionController
         if (null === $this->contentService) {
             $this->contentService = $this->getServiceLocator()->get('civcontent_service');
         }
-
         return $this->contentService;
     }
     
     protected function getPost()
     {
-    	if (null !== $this->post) {
-    		return $this->post;
+    	if (null === $this->post) {
+    	    $postId = $this->getEvent()->getRouteMatch()->getParam('postid');
+    	    $this->post = $this->getContentService()->getPostById($postId);
     	}
-    	$postId = $this->getEvent()->getRouteMatch()->getParam('postid');
-    	return $this->getContentService()->getPostById($postId); 
+    	return $this->post;
     }
     
     protected function getCategoryName()
     {
-        if (null !== $this->category) {
-            return $this->category;
+        if (null === $this->category) {
+            $this->category = $this->getEvent()->getRouteMatch()->getParam('category');
         }
-        return $this->getEvent()->getRouteMatch()->getParam('category');
+        return $this->category;
     }
     
 	public function indexAction()
@@ -63,16 +62,12 @@ class IndexController extends AbstractActionController
         // Create a new instance of the post form.
         $form = $this->getServiceLocator()->get('civcontent_post_form');
         
-        // Grab a copy of the category.
-    //    $category = $this->getCategory();
-        
         // Check if the request is a POST.
         $request = $this->getRequest();
         if ($request->isPost())
         {   
             // Create a new post and set its category.
             $post = $this->getServiceLocator()->get('civcontent_post');
-   //         $post->setCategory($category());
    
             $data = (array) $request->getPost();
             $form->bind($post);
@@ -80,12 +75,10 @@ class IndexController extends AbstractActionController
             if ($form->isValid())
             {
                 // Persist changes.
-                $post->setContentCategoryId(1);  // temp hack
                 $this->getContentService()->persist($post);
                 
                 // Redirect to content category
                 return $this->redirect()->toRoute('content/action', array(
-       //             'category'   => $category->getName(),
                     'action'     => 'index'
                 ));
             }
@@ -94,25 +87,20 @@ class IndexController extends AbstractActionController
         // If a GET request, or invalid data then render/re-render the form
         return new ViewModel(array(
             'form'   => $form,
-         //   'tag'    => $category
         ));
     }
     
-public function editAction()
+    public function editAction()
     {
         // Create a new instance of the post form.
         $form = $this->getServiceLocator()->get('civcontent_post_form');
         
-        // Grab a copy of the category.
-    //    $category = $this->getCategory();
-		
         // Grab copy of the existing entity
         $post = $this->getPost();
         if (!$post) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
-        $form->setBindOnValidate(false);
 		$form->bind($post);
 		    
         // Check if the request is a POST.
@@ -124,12 +112,11 @@ public function editAction()
             if ($form->isValid())
             {
                 // Persist changes.
-                $post->setContentCategoryId(1);  // temp hack
                 $this->getContentService()->persist($post);
                 
                 // Redirect to content category
                 return $this->redirect()->toRoute('content/action', array(
-                    'action'     => 'index'
+                    'action' => 'index'
                 ));
             }
         }
@@ -137,6 +124,7 @@ public function editAction()
         // If a GET request, or invalid data then render/re-render the form
         return new ViewModel(array(
             'form'   => $form,
+            'post' => $post
         ));
     }
 

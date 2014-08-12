@@ -1,10 +1,11 @@
 <?php
+/**
+ * CivContent (https://github.com/srayner/CivContent)
+ */
 
 namespace CivContent\Form;
 
-use Zend\Form\Form;
-
-class ContentForm extends Form
+class ContentForm extends AbstractForm
 {
     public function __construct()
     {
@@ -20,13 +21,6 @@ class ContentForm extends Form
                 ),
         ));
         
-        $categories = array(
-            '1' => 'My Robot',
-            '2' => 'Raspberry Pi',
-            '3' => 'RepRap',
-            '4' => 'Beaglebone Black',
-            '5' => 'Quadcopter',
-        );
         $this->add(array(
             'name' => 'content_category_id',
             'type' => 'Zend\Form\Element\Select',
@@ -34,7 +28,6 @@ class ContentForm extends Form
                 'label' => 'Category'
             ),
             'attributes' => array(
-                'options' => $categories,
                 'class' => 'form-control',
             )
         ));
@@ -75,5 +68,11 @@ class ContentForm extends Form
                 'class' => 'btn btn-primary'
             ),
         ));
+    }
+    
+    public function setCategories($contentService)
+    {
+        $categories = $contentService->getCategoriesArray();
+        $this->get('content_category_id')->setAttribute('options', $categories);
     }
 }

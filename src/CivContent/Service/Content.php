@@ -93,6 +93,11 @@ class Content implements ServiceManagerAwareInterface
         return $this->categoryMapper->getCategories();
     }
     
+    public function getCategoriesArray()
+    {
+        return $this->categoryMapper->getCategoryArray();
+    }
+    
     public function getCategoryById($id)
     {
         return $this->categoryMapper->getCategoryById($id);

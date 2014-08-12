@@ -9,7 +9,10 @@
   
 <?php
     $form = $this->form;
-    $form->setAttribute('action', $this->url('content/action', array('action' => 'add')));
+    $form->setAttribute('action', $this->url('content/action', array(
+        'action' => 'edit',
+        'postid' => $this->post->getContentPostId()
+    )));
     $form->prepare();
     echo $this->renderFormHorizontal($form);
 ?>

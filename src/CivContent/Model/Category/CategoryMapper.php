@@ -3,7 +3,7 @@
 namespace CivContent\Model\Category;
 
 use ZfcBase\Mapper\AbstractDbMapper;
-use EdpDiscuss\Service\DbAdapterAwareInterface;
+use CivContent\Service\DbAdapterAwareInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
 class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface, DbAdapterAwareInterface
@@ -18,6 +18,18 @@ class CategoryMapper extends AbstractDbMapper implements CategoryMapperInterface
 	{
 	    $select = $this->getSelect();
 	    return $this->select($select);
+	}
+	
+	public function getCategoryArray()
+	{
+	    $select = $this->getSelect();
+	    $categories = $this->select($select);
+	    $result = array();
+	    foreach ($categories as $category)
+	    {
+	        $result[$category->getContentCategoryId()] = $category->getCategoryName(); 
+	    }
+	    return $result;
 	}
 	
 	/**

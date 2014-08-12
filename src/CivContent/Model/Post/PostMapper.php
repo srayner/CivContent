@@ -3,7 +3,7 @@
 namespace CivContent\Model\Post;
 
 use ZfcBase\Mapper\AbstractDbMapper;
-use EdpDiscuss\Service\DbAdapterAwareInterface;
+use CivContent\Service\DbAdapterAwareInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
 class PostMapper extends AbstractDbMapper implements PostMapperInterface, DbAdapterAwareInterface

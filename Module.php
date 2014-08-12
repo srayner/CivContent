@@ -57,6 +57,7 @@ class Module
                 },
                 'civcontent_post_form' => function($sm) {
                     $form = new \CivContent\Form\ContentForm;
+                    $form->setCategories($sm->get('civcontent_service'));
                     $form->setInputFilter(new \CivContent\Form\PostFilter());
                     $form->setHydrator($sm->get('civcontent_post_form_hydrator'));
                     return $form;
