@@ -7,6 +7,7 @@ class Post implements PostInterface
 	protected $contentPostId;
 	protected $contentCategoryId;
 	protected $postTitle;
+	protected $blurb;
 	protected $postBody;
 
 	public function getContentPostId()
@@ -42,6 +43,28 @@ class Post implements PostInterface
 		return $this;
 	}
 
+	public function getBlurb()
+	{
+	    return $this->blurb;
+	}
+	
+	public function setBlurb($blurb)
+	{
+	    $this->blurb = $blurb;
+	    return $this;
+	}
+	
+	public function getLinkText()
+	{
+	    return $this->linkText;
+	}
+	
+	public function setLinkText($text)
+	{
+	    $this->linkText = $text;
+	    return $this;
+	}
+	
     public function getPostBody()
 	{
 		return $this->postBody;

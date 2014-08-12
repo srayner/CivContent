@@ -1,3 +1,10 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo $this->url('content/category', array(
+          'action' => 'index'
+      )); ?>">Content Categories</a></li>
+  <li class="active"><?php echo $this->category->getCategoryName(); ?></li>
+</ol>
+
 <h2><?php echo $this->category->getCategoryName(); ?> Posts</h2>
 <table  class="table table-striped">
     <tr>
@@ -29,7 +36,3 @@
 <a class="btn btn-default" href="<?php echo $this->url('content/action', array(
     'action' => 'add'
 )); ?>">New Post</a>
-
-<a class="btn btn-default" href="<?php echo $this->url('content/category', array(
-    'action' => 'index'
-)); ?>">Categories</a>

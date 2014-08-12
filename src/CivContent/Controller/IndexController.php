@@ -86,9 +86,13 @@ class IndexController extends AbstractActionController
                 // Persist changes.
                 $this->getContentService()->persist($post);
                 
-                // Redirect to content category
-                return $this->redirect()->toRoute('content/action', array(
-                    'action'     => 'index'
+                // Redirect to list category content
+                $category = $this->getContentService()->getCategoryById($post->getContentCategoryId());
+                if (false === $category){
+                    return $this->redirect()->toRoute('content/category');
+                }
+                return $this->redirect()->toRoute('content/list', array(
+                    'category' => $category->getUrlPath()
                 ));
             }
         }
@@ -123,9 +127,13 @@ class IndexController extends AbstractActionController
                 // Persist changes.
                 $this->getContentService()->persist($post);
                 
-                // Redirect to content category
-                return $this->redirect()->toRoute('content/action', array(
-                    'action' => 'index'
+                // Redirect to list category content
+                $category = $this->getContentService()->getCategoryById($post->getContentCategoryId());
+                if (false === $category){
+                    return $this->redirect()->toRoute('content/category');
+                }
+                return $this->redirect()->toRoute('content/list', array(
+                    'category' => $category->getUrlPath()
                 ));
             }
         }

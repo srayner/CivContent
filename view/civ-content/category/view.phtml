@@ -1,18 +1,22 @@
-<?php
-    echo $this->category->getCategoryBody();
-?>
+<div class="row">
+    <div class="col-md-12">
+    <?php echo $this->category->getCategoryBody(); ?>
+    </div>
+</div>
 
+<div class="row">
 <?php foreach($this->posts as $post):?>
         
-    <div class="span4">
-        <h2><?php echo $post->getPostTitle() ?></h2>
-        <p><?php echo $post->getPostTitle() ?></p>
+    <div class="col-md-4">
+        <h3><?php echo $post->getPostTitle() ?></h2>
+        <p><?php echo $post->getBlurb() ?></p>
             
         <p><a class="btn btn-info" href="<?php echo $this->url('civ-content/post', array(
             'category' => $category->getUrlPath(),
             'postid'   => $post->getContentPostId()
             )
-        )?>" target="_self"><?php echo $post->getPostTitle() ?> &raquo;</a></p>
+        )?>" target="_self"><?php echo $post->getLinkText() ?> &raquo;</a></p>
     </div>
 
 <?php endforeach;?>
+</div>

@@ -45,6 +45,32 @@ class ContentForm extends AbstractForm
         ));
         
         $this->add(array(
+            'name' => 'blurb',
+            'options' => array(
+                'label' => 'Blurb',
+            ),
+            'attributes' => array(
+                'type' => 'textarea',
+                'class' => 'form-control ckeditor',
+                'rows' => '3',
+                'id' => 'editor1'
+            ),
+        
+        ));
+        
+        $this->add(array(
+            'name' => 'link_text',
+            'options' => array(
+                'label' => 'Link Text',
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'class' => 'form-control',
+            ),
+        
+        ));
+        
+        $this->add(array(
                 'name' => 'post_body',
                 'options' => array(
                         'label' => 'Content',
@@ -53,7 +79,7 @@ class ContentForm extends AbstractForm
                         'type' => 'textarea',
                         'class' => 'form-control ckeditor',
                         'rows' => '6',
-                        'id' => 'editor1'
+                        'id' => 'editor2'
                 ),
                 
         ));
