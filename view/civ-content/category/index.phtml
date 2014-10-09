@@ -24,6 +24,9 @@
                 'action' => 'delete',
                 'categoryid'   => $category->getContentCategoryId()
             )); ?>">Delete</a>
+            <a href="<?php echo $this->url('civ-content', array(
+                'category'   => $category->getUrlPath()
+            )); ?>">Preview</a>
         </td>
     </tr>
     <?php endforeach;?>

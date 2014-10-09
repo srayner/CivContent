@@ -28,6 +28,10 @@
                 'action' => 'delete',
                 'postid'   => $post->getContentPostId()
             )); ?>">Delete</a>
+            <a href="<?php echo $this->url('civ-content/post', array(
+                'category' => $this->category->getUrlPath(),
+                'postid'   => $post->getContentPostId()
+            )); ?>">Preview</a>
         </td>
     </tr>
     <?php endforeach;?>
