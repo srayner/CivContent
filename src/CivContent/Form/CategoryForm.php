@@ -45,6 +45,18 @@ class CategoryForm extends Form
             ),
         ));
         
+        // Show in menu
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'show_in_menu',
+            'options' => array(
+                'label' => 'Show in menu',
+                'use_hidden_element' => false,
+                'checked_value' => 'Yes',
+                'unchecked_value' => 'No'
+            ),
+        ));
+        
         $this->add(array(
             'name' => 'category_body',
             'options' => array(

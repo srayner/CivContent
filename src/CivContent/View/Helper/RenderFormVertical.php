@@ -17,16 +17,21 @@ class RenderFormVertical extends AbstractHelper
         foreach($elements as $element)
         {
             $elementClass = get_class($element);
-            $hidden = ($element->getAttribute('type') == 'hidden');
-            $button = ($element->getAttribute('type') == 'submit');
+            $hidden   = ($element->getAttribute('type') == 'hidden');
+            $button   = ($element->getAttribute('type') == 'submit');
+            $checkbox = ($element->getAttribute('type') == 'checkbox');
 
             if ((!$hidden) && (!$button))
             {
+                $divclass = 'form-group';
+                if ($checkbox) {
+                    $divclass = 'checkbox';
+                }
                 $messages = $element->getMessages();
                 if (empty($messages)) {
-                    $output .= '<div class="form-group">' . PHP_EOL;
+                    $output .= '<div class="' . $divclass . '">' . PHP_EOL;
                 } else {
-                    $output .= '<div class="form-group has-error">';
+                    $output .= '<div class="' . $divclass . ' has-error">' . PHP_EOL;
                 }
             }
 

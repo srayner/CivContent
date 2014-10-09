@@ -8,6 +8,7 @@ class Category implements CategoryInterface
     protected $categoryName;
     protected $urlPath;
     protected $categoryBody;
+    protected $showinmenu;
     
     public function getContentCategoryId()
     {
@@ -50,6 +51,17 @@ class Category implements CategoryInterface
     public function setCategoryBody($body)
     {
         $this->categoryBody = $body;
+        return $this;
+    }
+    
+    public function getShowInMenu()
+    {
+        return $this->showInMenu;
+    }
+    
+    public function setShowInMenu($showInMenu)
+    {
+        $this->showInMenu = $showInMenu;
         return $this;
     }
 }
